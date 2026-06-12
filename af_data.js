@@ -1,9 +1,8 @@
 // ─── API-FOOTBALL ENRICHMENT DATA ────────────────────────────────────────────
 // Source: api-football.com · League ID 1 · Season 2026
 // Last updated: 2026-06-12
+// API key is server-side only — all requests proxied through /api/*
 // ─────────────────────────────────────────────────────────────────────────────
-
-const AF_API_KEY = 'bfac29dc2d4b877965eecadec68f2540';
 
 // Maps football-data.org team names → API-Football IDs (for logo CDN)
 const AF_TEAM_IDS = {
@@ -134,13 +133,11 @@ const AF_LINEUPS = {
   },
 };
 
-// Live refresh: call this to update a fixture's odds from API-Football
+// ─── LIVE REFRESH — proxied through Vercel /api/* (key stays server-side) ────
+
 async function fetchLiveOdds(afId) {
   try {
-    const r = await fetch(`https://v3.football.api-sports.io/odds?fixture=${afId}`, {
-      headers: { 'x-apisports-key': AF_API_KEY }
-    });
-    const d = await r.json();
+    const d = await fetch(`/api/odds?fixture=${afId}`).then(r => r.json());
     if (!d.response?.length) return null;
     const bet365 = d.response[0].bookmakers.find(b => b.name === 'Bet365');
     if (!bet365) return null;
@@ -157,20 +154,14 @@ async function fetchLiveOdds(afId) {
 
 async function fetchLiveEvents(afId) {
   try {
-    const r = await fetch(`https://v3.football.api-sports.io/fixtures/events?fixture=${afId}`, {
-      headers: { 'x-apisports-key': AF_API_KEY }
-    });
-    const d = await r.json();
+    const d = await fetch(`/api/events?fixture=${afId}`).then(r => r.json());
     return d.response || [];
   } catch { return []; }
 }
 
 async function fetchLiveFixture(afId) {
   try {
-    const r = await fetch(`https://v3.football.api-sports.io/fixtures?id=${afId}`, {
-      headers: { 'x-apisports-key': AF_API_KEY }
-    });
-    const d = await r.json();
+    const d = await fetch(`/api/fixture?id=${afId}`).then(r => r.json());
     return d.response?.[0] || null;
   } catch { return null; }
 }
