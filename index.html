@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WC2026 · Fixtures & Value Betting Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="logo" onclick="setTab('fixtures'); return false;">
+      <img src="https://crests.football-data.org/wm26.png" class="logo-emblem" onerror="this.style.display='none'">
+      <div>
+        <div class="logo-text">FIFA WORLD CUP 2026</div>
+        <div class="logo-sub">USA · CANADA · MEXICO · 11 Jun – 19 Jul</div>
+      </div>
+    </a>
+    <div class="header-right">
+      <span class="live-badge" id="live-badge">LIVE DATA</span>
+      <span class="header-date" id="header-date"></span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs-bar">
+  <div class="tabs-inner">
+    <button class="tab-btn active" data-tab="fixtures"  onclick="setTab('fixtures')">Fixtures</button>
+    <button class="tab-btn"        data-tab="standings" onclick="setTab('standings')">Standings</button>
+    <button class="tab-btn"        data-tab="betting"   onclick="setTab('betting')">Betting Engine</button>
+    <button class="tab-btn"        data-tab="teams"     onclick="setTab('teams')">Teams</button>
+    <button class="tab-btn"        data-tab="squads"    onclick="setTab('squads')">Squads</button>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- FIXTURES -->
+  <div id="pane-fixtures" class="tab-pane active">
+    <div class="filter-bar">
+      <div class="filter-section">
+        <span class="filter-label">Stage</span>
+        <button class="stage-btn active" data-stage="all"            onclick="setStageFilter('all')">All</button>
+        <button class="stage-btn"        data-stage="GROUP_STAGE"    onclick="setStageFilter('GROUP_STAGE')">Group</button>
+        <button class="stage-btn"        data-stage="LAST_32"        onclick="setStageFilter('LAST_32')">R32</button>
+        <button class="stage-btn"        data-stage="LAST_16"        onclick="setStageFilter('LAST_16')">R16</button>
+        <button class="stage-btn"        data-stage="QUARTER_FINALS" onclick="setStageFilter('QUARTER_FINALS')">QF</button>
+        <button class="stage-btn"        data-stage="SEMI_FINALS"    onclick="setStageFilter('SEMI_FINALS')">SF</button>
+        <button class="stage-btn"        data-stage="FINAL"          onclick="setStageFilter('FINAL')">Final</button>
+      </div>
+      <div class="filter-section">
+        <span class="filter-label">Group</span>
+        <button class="group-btn active" data-group="all" onclick="setGroupFilter('all')">All</button>
+        <button class="group-btn" data-group="GROUP_A" onclick="setGroupFilter('GROUP_A')">A</button>
+        <button class="group-btn" data-group="GROUP_B" onclick="setGroupFilter('GROUP_B')">B</button>
+        <button class="group-btn" data-group="GROUP_C" onclick="setGroupFilter('GROUP_C')">C</button>
+        <button class="group-btn" data-group="GROUP_D" onclick="setGroupFilter('GROUP_D')">D</button>
+        <button class="group-btn" data-group="GROUP_E" onclick="setGroupFilter('GROUP_E')">E</button>
+        <button class="group-btn" data-group="GROUP_F" onclick="setGroupFilter('GROUP_F')">F</button>
+        <button class="group-btn" data-group="GROUP_G" onclick="setGroupFilter('GROUP_G')">G</button>
+        <button class="group-btn" data-group="GROUP_H" onclick="setGroupFilter('GROUP_H')">H</button>
+        <button class="group-btn" data-group="GROUP_I" onclick="setGroupFilter('GROUP_I')">I</button>
+        <button class="group-btn" data-group="GROUP_J" onclick="setGroupFilter('GROUP_J')">J</button>
+        <button class="group-btn" data-group="GROUP_K" onclick="setGroupFilter('GROUP_K')">K</button>
+        <button class="group-btn" data-group="GROUP_L" onclick="setGroupFilter('GROUP_L')">L</button>
+      </div>
+    </div>
+    <div id="fixtures-content"></div>
+  </div>
+
+  <!-- STANDINGS -->
+  <div id="pane-standings" class="tab-pane">
+    <div id="standings-content"></div>
+  </div>
+
+  <!-- BETTING ENGINE -->
+  <div id="pane-betting" class="tab-pane">
+    <div id="betting-content"></div>
+  </div>
+
+  <!-- TEAMS -->
+  <div id="pane-teams" class="tab-pane">
+    <div id="teams-content"></div>
+  </div>
+
+  <!-- SQUADS -->
+  <div id="pane-squads" class="tab-pane">
+    <div class="squad-search-bar">
+      <input type="text" id="squad-search" placeholder="Search player or nationality..." oninput="renderSquads()" class="search-input">
+    </div>
+    <div id="squads-content"></div>
+  </div>
+
+</main>
+
+<script src="data.js"></script>
+<script src="af_data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

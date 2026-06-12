@@ -1,0 +1,17 @@
+# Raw API response dumps (large, regenerated on demand)
+af_enriched.json
+af_events.json
+af_fixtures.json
+af_lineup_*.json
+af_odds.json
+af_predictions.json
+af_pred_*.json
+af_standings.json
+af_topscorers.json
+af_topassists.json
+af_topcards.json
+wc2026_matches.json
+wc2026_squads.json
+
+# Claude local config
+.claude/
