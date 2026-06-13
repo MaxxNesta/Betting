@@ -521,6 +521,212 @@ body {
 
 .no-results { color: var(--muted); font-size: 13px; padding: 20px 0; }
 
+/* ── PREDICTIONS PAGE ────────────────────────────────────────────────────── */
+.pred-page-header { margin-bottom: 24px; }
+.pred-page-title {
+  font-family: var(--font-mono); font-size: 16px; font-weight: 900;
+  letter-spacing: 3px; color: var(--gold); margin-bottom: 5px;
+}
+.pred-page-sub { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+
+.pred-section-label {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border);
+}
+
+/* ── PREDICTION CARD ─────────────────────────────────────────────────────── */
+.pred-card {
+  background: var(--card); border: 1px solid var(--border);
+  margin-bottom: 8px;
+  transition: border-color .15s;
+}
+.pred-card:hover { border-color: var(--border2); }
+
+.pred-header {
+  padding: 14px 18px; cursor: pointer;
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+.pred-teams {
+  display: flex; align-items: center; gap: 12px;
+}
+.pred-team-side {
+  display: flex; align-items: center; gap: 8px; flex: 1;
+}
+.pred-team-side.right { justify-content: flex-end; flex-direction: row-reverse; }
+.pred-crest { width: 28px; height: 28px; object-fit: contain; }
+.pred-tname { font-size: 15px; font-weight: 700; color: var(--text); }
+.pred-won {
+  font-family: var(--font-mono); font-size: 9px; font-weight: 900;
+  background: var(--green); color: #000; padding: 1px 5px;
+}
+
+.pred-score-mid {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  flex-shrink: 0; min-width: 90px;
+}
+.pred-score {
+  font-family: var(--font-mono); font-size: 22px; font-weight: 900;
+  color: var(--text); letter-spacing: 2px;
+}
+.pred-vs {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 900;
+  color: var(--dim); letter-spacing: 2px;
+}
+.pred-time {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--text);
+}
+.pred-date {
+  font-family: var(--font-mono); font-size: 10px; color: var(--muted);
+}
+
+.pred-summary {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.pred-verdict {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 900;
+  letter-spacing: 1px; padding: 4px 12px;
+}
+.verd-home { background: rgba(59,130,246,.15); color: var(--blue); border: 1px solid rgba(59,130,246,.3); }
+.verd-away { background: rgba(139,92,246,.15); color: var(--purple); border: 1px solid rgba(139,92,246,.3); }
+.verd-draw { background: rgba(82,82,122,.15); color: var(--muted); border: 1px solid var(--border2); }
+
+.pred-conf {
+  display: flex; align-items: center; gap: 8px;
+}
+.conf-label {
+  font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+  letter-spacing: 1px; width: 90px; color: var(--muted);
+}
+.conf-bar  { width: 80px; height: 4px; background: var(--border2); overflow: hidden; }
+.conf-fill { height: 100%; }
+.conf-high  .conf-fill { background: var(--green); }
+.conf-high  .conf-label { color: var(--green); }
+.conf-mh    .conf-fill { background: #7dfc9a; }
+.conf-mh    .conf-label { color: #7dfc9a; }
+.conf-med   .conf-fill { background: var(--gold); }
+.conf-med   .conf-label { color: var(--gold); }
+.conf-low   .conf-fill { background: var(--muted); }
+.conf-pct { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--text); }
+
+.pred-rec-badge {
+  font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+  letter-spacing: 1px; padding: 3px 8px;
+}
+.rec-strong { background: var(--green-dim); color: var(--green); border: 1px solid var(--green); }
+.rec-value  { background: #001c0a; color: #7dfc9a; border: 1px solid #7dfc9a; }
+.rec-slight { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--gold); }
+.rec-avoid  { background: var(--red-dim); color: var(--red); border: 1px solid var(--red); }
+
+.pred-expand-hint {
+  margin-left: auto; font-size: 12px; color: var(--dim); flex-shrink: 0;
+}
+
+/* ── PRED BODY ────────────────────────────────────────────────────────────── */
+.pred-body {
+  border-top: 1px solid var(--border);
+  padding: 18px 18px 14px;
+  background: var(--surface);
+}
+
+.pred-sections {
+  display: grid;
+  grid-template-columns: 220px 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.pred-section { }
+.pred-sec-title {
+  font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+  letter-spacing: 2px; color: var(--muted); margin-bottom: 10px;
+}
+
+/* win prob bars */
+.pred-prob-rows { display: flex; flex-direction: column; gap: 8px; }
+.pred-prob-row  { display: flex; align-items: center; gap: 10px; }
+.ppr-label { font-size: 12px; font-weight: 600; color: var(--text); width: 90px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ppr-bar   { flex: 1; height: 5px; background: var(--border2); overflow: hidden; }
+.ppr-fill  { height: 100%; }
+.ppr-fill.home { background: var(--blue); }
+.ppr-fill.draw { background: var(--dim); }
+.ppr-fill.away { background: var(--purple); }
+.ppr-pct   { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--text); width: 30px; text-align: right; }
+
+.pred-formations {
+  display: flex; align-items: center; gap: 8px; margin-top: 12px;
+}
+.form-tag {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  color: var(--gold); background: var(--gold-dim); padding: 2px 8px;
+}
+.form-sep { font-family: var(--font-mono); font-size: 10px; color: var(--dim); }
+
+/* factors / risks */
+.pred-factors, .pred-risks {
+  list-style: none; display: flex; flex-direction: column; gap: 6px;
+}
+.pred-factors li {
+  font-size: 12px; color: var(--text); line-height: 1.5;
+  padding-left: 14px; position: relative;
+}
+.pred-factors li::before { content: '▸'; position: absolute; left: 0; color: var(--gold); font-size: 10px; top: 2px; }
+.pred-risks li {
+  font-size: 12px; color: var(--muted); line-height: 1.5;
+  padding-left: 14px; position: relative;
+}
+.pred-risks li::before { content: '⚠'; position: absolute; left: 0; font-size: 10px; top: 1px; }
+
+/* ── RECOMMENDATION BOX ──────────────────────────────────────────────────── */
+.pred-recommendation {
+  border: 1px solid; padding: 14px 16px;
+}
+.pred-recommendation.rec-strong { border-color: var(--green); background: var(--green-dim); }
+.pred-recommendation.rec-value  { border-color: #7dfc9a; background: #001c0a; }
+.pred-recommendation.rec-slight { border-color: var(--gold); background: var(--gold-dim); }
+.pred-recommendation.rec-avoid  { border-color: var(--red); background: var(--red-dim); }
+
+.rec-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.rec-badge {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 900;
+  letter-spacing: 2px; padding: 3px 10px;
+}
+.rec-strong .rec-badge { background: var(--green); color: #000; }
+.rec-value  .rec-badge { background: #7dfc9a; color: #000; }
+.rec-slight .rec-badge { background: var(--gold); color: #000; }
+.rec-avoid  .rec-badge { background: var(--red); color: #fff; }
+.rec-source {
+  font-family: var(--font-mono); font-size: 10px; color: var(--muted);
+  padding: 2px 6px; border: 1px solid var(--border2);
+}
+.rec-text {
+  font-size: 13px; line-height: 1.65; color: var(--text);
+  margin-bottom: 12px;
+}
+
+.rec-odds-row {
+  display: flex; gap: 8px;
+}
+.rec-odd-item {
+  flex: 1; text-align: center; background: var(--card); border: 1px solid var(--border);
+  padding: 8px 6px; display: flex; flex-direction: column; gap: 3px;
+}
+.rec-odd-item.active { border-color: var(--gold); background: var(--card2); }
+.roi-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: .5px; }
+.roi-val   { font-family: var(--font-mono); font-size: 16px; font-weight: 900; color: var(--text); }
+.rec-odd-item.active .roi-val { color: var(--gold); }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .pred-sections { grid-template-columns: 1fr 1fr; }
+  .pred-sections > :first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .pred-sections { grid-template-columns: 1fr; }
+  .pred-tname { font-size: 13px; }
+}
+
 /* ── SCROLLBAR ───────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }

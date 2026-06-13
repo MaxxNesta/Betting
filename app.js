@@ -666,11 +666,12 @@ function setTab(tab) {
   activeTab = tab;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
   document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === `pane-${tab}`));
-  if (tab === 'fixtures')  renderFixtures();
-  if (tab === 'standings') renderStandings();
-  if (tab === 'betting')   renderBettingEngine();
-  if (tab === 'teams')     renderTeams();
-  if (tab === 'squads')    renderSquads();
+  if (tab === 'fixtures')    renderFixtures();
+  if (tab === 'standings')  renderStandings();
+  if (tab === 'predictions')renderPredictions();
+  if (tab === 'betting')    renderBettingEngine();
+  if (tab === 'teams')      renderTeams();
+  if (tab === 'squads')     renderSquads();
 }
 
 function setStageFilter(stage) {
@@ -734,8 +735,9 @@ async function fetchLiveScores() {
 
     if (changed) {
       standings = buildStandings();
-      if (activeTab === 'fixtures')  renderFixtures();
-      if (activeTab === 'standings') renderStandings();
+      if (activeTab === 'fixtures')    renderFixtures();
+      if (activeTab === 'standings')   renderStandings();
+      if (activeTab === 'predictions') renderPredictions();
     }
 
     setLiveBadge(data.hasLive, data.fetchedAt);

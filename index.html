@@ -30,11 +30,12 @@
 
 <nav class="tabs-bar">
   <div class="tabs-inner">
-    <button class="tab-btn active" data-tab="fixtures"  onclick="setTab('fixtures')">Fixtures</button>
-    <button class="tab-btn"        data-tab="standings" onclick="setTab('standings')">Standings</button>
-    <button class="tab-btn"        data-tab="betting"   onclick="setTab('betting')">Betting Engine</button>
-    <button class="tab-btn"        data-tab="teams"     onclick="setTab('teams')">Teams</button>
-    <button class="tab-btn"        data-tab="squads"    onclick="setTab('squads')">Squads</button>
+    <button class="tab-btn active" data-tab="fixtures"    onclick="setTab('fixtures')">Fixtures</button>
+    <button class="tab-btn"        data-tab="standings"  onclick="setTab('standings')">Standings</button>
+    <button class="tab-btn"        data-tab="predictions"onclick="setTab('predictions')">Predictions</button>
+    <button class="tab-btn"        data-tab="betting"    onclick="setTab('betting')">Value Engine</button>
+    <button class="tab-btn"        data-tab="teams"      onclick="setTab('teams')">Teams</button>
+    <button class="tab-btn"        data-tab="squads"     onclick="setTab('squads')">Squads</button>
   </div>
 </nav>
 
@@ -78,6 +79,11 @@
     <div id="standings-content"></div>
   </div>
 
+  <!-- PREDICTIONS -->
+  <div id="pane-predictions" class="tab-pane">
+    <div id="predictions-content"></div>
+  </div>
+
   <!-- BETTING ENGINE -->
   <div id="pane-betting" class="tab-pane">
     <div id="betting-content"></div>
@@ -100,6 +106,7 @@
 
 <script src="data.js"></script>
 <script src="af_data.js"></script>
+<script src="predict.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
