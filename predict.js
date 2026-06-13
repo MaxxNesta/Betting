@@ -34,8 +34,8 @@ const STRENGTHS = {
   759: ['tactical flexibility', 'Musiala creativity', 'high defensive line'],
   815: ['elite defensive shape (5-4-1)', 'En-Nesyri headers', '2022 momentum'],
   818: ['James Rodriguez playmaking', 'physical presence', 'South American guile'],
-  771: ['home support', 'Pulisic drive', 'athletic pressing'],
-  769: ['Jiménez physical target', 'home advantage (host)', 'passionate support'],
+  771: ['Pulisic drive', 'athletic pressing', 'familiar conditions as co-host'],
+  769: ['Jiménez physical target', 'passionate support', 'familiar North American conditions'],
   828: ['Davies pace on the left', 'David goals', 'youthful energy'],
   799: ['Modric experience', 'Kovacic midfield press', 'tournament resilience'],
 };
@@ -51,7 +51,7 @@ const WEAKNESSES = {
   759: ['inconsistency in big moments', 'offensive transition gaps'],
   815: ['limited attacking options in KO rounds', 'long tournaments a test of depth'],
   818: ['defensive gaps on transition', 'away WC mentality'],
-  771: ['inexperienced in WC knockout pressure', 'home burden'],
+  771: ['inexperienced in WC knockout pressure', 'pressure of co-host expectations'],
   769: ['squad red card risk (saw vs South Africa)', 'disciplinary issues'],
   828: ['knockout stage experience', 'mental pressure as co-host'],
   799: ['ageing starting XI', 'goal threat inconsistency'],
@@ -60,10 +60,10 @@ const WEAKNESSES = {
 // ─── CORE ANALYSIS GENERATOR ──────────────────────────────────────────────────
 
 function generateMatchAnalysis(m, odds) {
-  const hRt = RATINGS[m.homeId] || { r: 55, name: m.homeName };
-  const aRt = RATINGS[m.awayId] || { r: 55, name: m.awayName };
+  const hRt = RATINGS[m.homeId] || { elo: 1500, name: m.homeName };
+  const aRt = RATINGS[m.awayId] || { elo: 1500, name: m.awayName };
   const probs = calcTrueProb(m.homeId, m.awayId);
-  const gap = hRt.r - aRt.r;
+  const gap = hRt.elo - aRt.elo;
 
   const hHist = WC_HISTORY[m.homeId] || null;
   const aHist = WC_HISTORY[m.awayId] || null;
@@ -76,15 +76,15 @@ function generateMatchAnalysis(m, odds) {
   let verdict, verdictSide, confidence;
   const absGap = Math.abs(gap);
 
-  if (absGap >= 20) {
+  if (absGap >= 200) {
     verdict     = gap > 0 ? `${hRt.name} Win` : `${aRt.name} Win`;
     verdictSide = gap > 0 ? 'home' : 'away';
     confidence  = 'HIGH';
-  } else if (absGap >= 10) {
+  } else if (absGap >= 100) {
     verdict     = gap > 0 ? `${hRt.name} Win` : `${aRt.name} Win`;
     verdictSide = gap > 0 ? 'home' : 'away';
     confidence  = 'MEDIUM-HIGH';
-  } else if (absGap >= 5) {
+  } else if (absGap >= 50) {
     verdict     = gap > 0 ? `${hRt.name} or Draw` : `${aRt.name} or Draw`;
     verdictSide = gap > 0 ? 'home' : 'away';
     confidence  = 'MEDIUM';
@@ -102,13 +102,13 @@ function generateMatchAnalysis(m, odds) {
   // ── Key Factors ───────────────────────────────────────────────────────────
   const factors = [];
 
-  // Rating gap
-  if (absGap >= 15)
-    factors.push(`${gap > 0 ? hRt.name : aRt.name} carry a ${absGap}-point rating advantage — a significant quality gap at this level`);
-  else if (absGap >= 8)
-    factors.push(`${gap > 0 ? hRt.name : aRt.name} rated ${absGap} points higher — a meaningful edge, but not insurmountable`);
+  // ELO gap
+  if (absGap >= 150)
+    factors.push(`${gap > 0 ? hRt.name : aRt.name} hold a ${absGap}-point ELO advantage — a significant quality gap at this level`);
+  else if (absGap >= 80)
+    factors.push(`${gap > 0 ? hRt.name : aRt.name} rated ${absGap} ELO points higher — a meaningful edge, but not insurmountable`);
   else
-    factors.push(`Ratings are within ${absGap} points — this is a genuinely competitive contest on paper`);
+    factors.push(`ELO ratings within ${absGap} points — this is a genuinely competitive contest on paper`);
 
   // WC history
   if (hHist?.titles > 0)
@@ -130,7 +130,7 @@ function generateMatchAnalysis(m, odds) {
   const risks = [];
   if (hWeak.length) risks.push(`${hRt.name} risk: ${hWeak[0]}`);
   if (aWeak.length) risks.push(`${aRt.name} risk: ${aWeak[0]}`);
-  if (absGap < 10)  risks.push('Close rating suggests either team can pinch a result on the day');
+  if (absGap < 100) risks.push('ELO ratings are close — either team can pinch a result on the day');
 
   // ── Bet Recommendation ────────────────────────────────────────────────────
   const recs = [];

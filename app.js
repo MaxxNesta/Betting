@@ -1,54 +1,53 @@
-// ─── TEAM RATINGS (FIFA ranking-based, mid-2026) ─────────────────────────────
+// ─── TEAM ELO RATINGS (World Football ELO, eloratings.net, Jun 2026) ─────────
 const RATINGS = {
-  762: { r: 94, name: 'Argentina',          flag: '🇦🇷' },
-  773: { r: 92, name: 'France',             flag: '🇫🇷' },
-  764: { r: 91, name: 'Brazil',             flag: '🇧🇷' },
-  760: { r: 90, name: 'Spain',              flag: '🇪🇸' },
-  770: { r: 89, name: 'England',            flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' },
-  765: { r: 87, name: 'Portugal',           flag: '🇵🇹' },
-  8601:{ r: 85, name: 'Netherlands',        flag: '🇳🇱' },
-  759: { r: 84, name: 'Germany',            flag: '🇩🇪' },
-  805: { r: 83, name: 'Belgium',            flag: '🇧🇪' },
-  799: { r: 81, name: 'Croatia',            flag: '🇭🇷' },
-  815: { r: 80, name: 'Morocco',            flag: '🇲🇦' },
-  758: { r: 79, name: 'Uruguay',            flag: '🇺🇾' },
-  788: { r: 78, name: 'Switzerland',        flag: '🇨🇭' },
-  818: { r: 77, name: 'Colombia',           flag: '🇨🇴' },
-  803: { r: 76, name: 'Turkey',             flag: '🇹🇷' },
-  816: { r: 75, name: 'Austria',            flag: '🇦🇹' },
-  771: { r: 75, name: 'United States',      flag: '🇺🇸' },
-  769: { r: 74, name: 'Mexico',             flag: '🇲🇽' },
-  804: { r: 74, name: 'Senegal',            flag: '🇸🇳' },
-  792: { r: 73, name: 'Sweden',             flag: '🇸🇪' },
-  766: { r: 72, name: 'Japan',              flag: '🇯🇵' },
-  8872:{ r: 72, name: 'Norway',             flag: '🇳🇴' },
-  772: { r: 71, name: 'South Korea',        flag: '🇰🇷' },
-  828: { r: 71, name: 'Canada',             flag: '🇨🇦' },
-  791: { r: 70, name: 'Ecuador',            flag: '🇪🇨' },
-  802: { r: 68, name: 'Tunisia',            flag: '🇹🇳' },
-  779: { r: 68, name: 'Australia',          flag: '🇦🇺' },
-  8873:{ r: 67, name: 'Scotland',           flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿' },
-  825: { r: 66, name: 'Egypt',              flag: '🇪🇬' },
-  840: { r: 65, name: 'Iran',               flag: '🇮🇷' },
-  1935:{ r: 65, name: 'Ivory Coast',        flag: '🇨🇮' },
-  763: { r: 64, name: 'Ghana',              flag: '🇬🇭' },
-  761: { r: 63, name: 'Paraguay',           flag: '🇵🇾' },
-  778: { r: 63, name: 'Algeria',            flag: '🇩🇿' },
-  798: { r: 62, name: 'Czechia',            flag: '🇨🇿' },
-  1060:{ r: 62, name: 'Bosnia-Herzegovina', flag: '🇧🇦' },
-  801: { r: 61, name: 'Saudi Arabia',       flag: '🇸🇦' },
-  1836:{ r: 60, name: 'Panama',             flag: '🇵🇦' },
-  1934:{ r: 59, name: 'Congo DR',           flag: '🇨🇩' },
-  8062:{ r: 58, name: 'Iraq',               flag: '🇮🇶' },
-  8049:{ r: 57, name: 'Jordan',             flag: '🇯🇴' },
-  8030:{ r: 56, name: 'Qatar',              flag: '🇶🇦' },
-  774: { r: 55, name: 'South Africa',       flag: '🇿🇦' },
-  8070:{ r: 54, name: 'Uzbekistan',         flag: '🇺🇿' },
-  1930:{ r: 53, name: 'Cape Verde Islands', flag: '🇨🇻' },
-  783: { r: 52, name: 'New Zealand',        flag: '🇳🇿' },
-  836: { r: 51, name: 'Haiti',              flag: '🇭🇹' },
-  802: { r: 50, name: 'Tunisia',            flag: '🇹🇳' },
-  9460:{ r: 49, name: 'Curaçao',            flag: '🏝️' },
+  760: { elo: 2157, name: 'Spain',              flag: '🇪🇸' },
+  762: { elo: 2115, name: 'Argentina',          flag: '🇦🇷' },
+  773: { elo: 2063, name: 'France',             flag: '🇫🇷' },
+  770: { elo: 2024, name: 'England',            flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' },
+  764: { elo: 1991, name: 'Brazil',             flag: '🇧🇷' },
+  765: { elo: 1989, name: 'Portugal',           flag: '🇵🇹' },
+  818: { elo: 1982, name: 'Colombia',           flag: '🇨🇴' },
+  8601:{ elo: 1948, name: 'Netherlands',        flag: '🇳🇱' },
+  791: { elo: 1938, name: 'Ecuador',            flag: '🇪🇨' },
+  759: { elo: 1932, name: 'Germany',            flag: '🇩🇪' },
+  8872:{ elo: 1914, name: 'Norway',             flag: '🇳🇴' },
+  799: { elo: 1912, name: 'Croatia',            flag: '🇭🇷' },
+  803: { elo: 1911, name: 'Turkey',             flag: '🇹🇷' },
+  766: { elo: 1906, name: 'Japan',              flag: '🇯🇵' },
+  805: { elo: 1894, name: 'Belgium',            flag: '🇧🇪' },
+  758: { elo: 1892, name: 'Uruguay',            flag: '🇺🇾' },
+  788: { elo: 1891, name: 'Switzerland',        flag: '🇨🇭' },
+  769: { elo: 1881, name: 'Mexico',             flag: '🇲🇽' },
+  804: { elo: 1860, name: 'Senegal',            flag: '🇸🇳' },
+  761: { elo: 1834, name: 'Paraguay',           flag: '🇵🇾' },
+  816: { elo: 1830, name: 'Austria',            flag: '🇦🇹' },
+  815: { elo: 1827, name: 'Morocco',            flag: '🇲🇦' },
+  772: { elo: 1786, name: 'South Korea',        flag: '🇰🇷' },
+  8873:{ elo: 1782, name: 'Scotland',           flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿' },
+  779: { elo: 1777, name: 'Australia',          flag: '🇦🇺' },
+  778: { elo: 1772, name: 'Algeria',            flag: '🇩🇿' },
+  840: { elo: 1772, name: 'Iran',               flag: '🇮🇷' },
+  828: { elo: 1767, name: 'Canada',             flag: '🇨🇦' },
+  1836:{ elo: 1730, name: 'Panama',             flag: '🇵🇦' },
+  771: { elo: 1726, name: 'United States',      flag: '🇺🇸' },
+  8070:{ elo: 1714, name: 'Uzbekistan',         flag: '🇺🇿' },
+  792: { elo: 1712, name: 'Sweden',             flag: '🇸🇪' },
+  798: { elo: 1712, name: 'Czechia',            flag: '🇨🇿' },
+  825: { elo: 1696, name: 'Egypt',              flag: '🇪🇬' },
+  1935:{ elo: 1695, name: 'Ivory Coast',        flag: '🇨🇮' },
+  8049:{ elo: 1680, name: 'Jordan',             flag: '🇯🇴' },
+  1934:{ elo: 1652, name: 'Congo DR',           flag: '🇨🇩' },
+  802: { elo: 1628, name: 'Tunisia',            flag: '🇹🇳' },
+  1060:{ elo: 1616, name: 'Bosnia-Herzegovina', flag: '🇧🇦' },
+  8062:{ elo: 1607, name: 'Iraq',               flag: '🇮🇶' },
+  1930:{ elo: 1578, name: 'Cape Verde Islands', flag: '🇨🇻' },
+  801: { elo: 1576, name: 'Saudi Arabia',       flag: '🇸🇦' },
+  783: { elo: 1562, name: 'New Zealand',        flag: '🇳🇿' },
+  836: { elo: 1548, name: 'Haiti',              flag: '🇭🇹' },
+  774: { elo: 1511, name: 'South Africa',       flag: '🇿🇦' },
+  763: { elo: 1510, name: 'Ghana',              flag: '🇬🇭' },
+  9460:{ elo: 1434, name: 'Curaçao',            flag: '🏝️' },
+  8030:{ elo: 1421, name: 'Qatar',              flag: '🇶🇦' },
 };
 
 // WC win probability weights (bookmaker-derived, roughly)
@@ -68,16 +67,20 @@ const GROUP_MAP = {}; // teamId → group letter
 
 function getTeamRating(id) {
   const r = RATINGS[id];
-  return r ? r.r : 55;
+  return r ? r.elo : 1500;
 }
 
 function calcTrueProb(homeId, awayId) {
   const h = getTeamRating(homeId);
   const a = getTeamRating(awayId);
-  const diff = (h - a) / 100;
-  const homeProb = Math.min(0.85, Math.max(0.10, 0.46 + diff));
-  const drawProb = Math.max(0.06, 0.26 - Math.abs(diff) * 0.55);
-  const awayProb = Math.max(0.05, 1 - homeProb - drawProb);
+  const dr = h - a;
+  // ELO win expectancy — neutral venue, no home advantage (WC hosted in USA/Canada/Mexico)
+  const eloExp = 1 / (1 + Math.pow(10, -dr / 400));
+  // Draw probability: higher for even matchups, lower when gap is large
+  const drawProb = Math.max(0.12, 0.28 - Math.abs(dr) * 0.28 / 400);
+  const nonDraw = 1 - drawProb;
+  const homeProb = Math.min(0.82, Math.max(0.08, eloExp * nonDraw));
+  const awayProb = Math.max(0.05, nonDraw - homeProb);
   return { home: homeProb, draw: drawProb, away: awayProb };
 }
 
@@ -411,12 +414,12 @@ function renderStandings() {
 // ─── RENDER: BETTING ENGINE ───────────────────────────────────────────────────
 
 function renderBettingEngine() {
-  const teamsSorted = Object.entries(RATINGS).sort((a, b) => b[1].r - a[1].r);
+  const teamsSorted = Object.entries(RATINGS).sort((a, b) => b[1].elo - a[1].elo);
 
   let html = `
     <div class="engine-header">
       <h2 class="engine-title">VALUE BETTING ENGINE</h2>
-      <p class="engine-sub">Model odds vs market odds · Edge = (True prob − Implied prob) / Implied prob · Ratings based on FIFA rankings</p>
+      <p class="engine-sub">Model odds vs market odds · Edge = (True prob − Implied prob) / Implied prob · World Football ELO ratings · Neutral venue model</p>
     </div>
     <div class="team-selector">
       <button class="team-btn ${!selectedTeamId ? 'active' : ''}" onclick="selectTeam(null)">All Value Bets</button>
@@ -463,7 +466,7 @@ function renderTeamBettingReport(teamId) {
         <div class="report-meta">
           <h3>${team.name}</h3>
           <div class="report-stats">
-            <span class="stat-pill">Rating <strong>${team.r}</strong></span>
+            <span class="stat-pill">ELO <strong>${team.elo}</strong></span>
             <span class="stat-pill">Group <strong>${GROUP_MAP[teamId] || '?'}</strong></span>
             <span class="stat-pill">WC Win <strong>${winOdds}x</strong></span>
             ${squad ? `<span class="stat-pill">Squad <strong>${squad.squad.length} players</strong></span>` : ''}
@@ -583,7 +586,7 @@ function renderAllValueBets() {
 // ─── RENDER: TEAMS ────────────────────────────────────────────────────────────
 
 function renderTeams() {
-  const sorted = Object.entries(RATINGS).sort((a, b) => b[1].r - a[1].r);
+  const sorted = Object.entries(RATINGS).sort((a, b) => b[1].elo - a[1].elo);
   let html = `<div class="teams-grid">`;
   sorted.forEach(([id, t], i) => {
     const squad = getSquad(parseInt(id));
@@ -602,8 +605,8 @@ function renderTeams() {
           <div class="tc-group">Group ${GROUP_MAP[id] || '?'}</div>
         </div>
         <div class="tc-rating">
-          <div class="rating-track"><div class="rating-fill" style="width:${t.r}%"></div></div>
-          <span class="rating-num">${t.r}</span>
+          <div class="rating-track"><div class="rating-fill" style="width:${Math.round((t.elo - 1350) / 850 * 100)}%"></div></div>
+          <span class="rating-num">ELO ${t.elo}</span>
         </div>
         <div class="tc-stats">
           <div class="tc-stat"><span class="ts-v">${played.length}/${fixtures.length}</span><span class="ts-l">Played</span></div>
@@ -621,8 +624,8 @@ function renderTeams() {
 function renderSquads() {
   const search = (document.getElementById('squad-search')?.value || '').toLowerCase();
   const sorted = [...WC_SQUADS].sort((a, b) => {
-    const ra = RATINGS[a.id]?.r ?? 50;
-    const rb = RATINGS[b.id]?.r ?? 50;
+    const ra = RATINGS[a.id]?.elo ?? 1500;
+    const rb = RATINGS[b.id]?.elo ?? 1500;
     return rb - ra;
   });
 
@@ -639,7 +642,7 @@ function renderSquads() {
         <div class="squad-block-header" onclick="goToBetting(${team.id})">
           <img src="${team.crest}" class="sb-crest" onerror="this.style.display='none'">
           <span class="sb-name">${team.name}</span>
-          <span class="sb-rating">Rating ${rt.r ?? '?'}</span>
+          <span class="sb-rating">ELO ${rt.elo ?? '?'}</span>
           <span class="sb-count">${players.length} players</span>
         </div>
         <div class="squad-block-players">
