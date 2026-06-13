@@ -57,8 +57,17 @@ body {
   background: var(--green-dim); color: var(--green);
   font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 2px;
   padding: 4px 10px; border: 1px solid var(--green);
+  transition: background .3s;
 }
-.header-date { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+.live-badge.pulsing {
+  animation: pulse-badge 1.5s ease-in-out infinite;
+}
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+.update-clock { font-family: var(--font-mono); font-size: 10px; color: var(--dim); }
+.header-date  { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
 
 /* ── TABS ─────────────────────────────────────────────────────────────────── */
 .tabs-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; }

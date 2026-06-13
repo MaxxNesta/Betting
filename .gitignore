@@ -15,3 +15,6 @@ wc2026_squads.json
 
 # Claude local config
 .claude/
+
+# Vercel
+.vercel/

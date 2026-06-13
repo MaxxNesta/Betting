@@ -708,14 +708,70 @@ function showTeamPanel(id) {
   goToBetting(id);
 }
 
+// ─── LIVE UPDATES ─────────────────────────────────────────────────────────────
+
+let _pollTimer = null;
+
+async function fetchLiveScores() {
+  try {
+    const data = await fetch('/api/live').then(r => r.json());
+    if (!data.matches?.length) return;
+
+    let changed = false;
+    data.matches.forEach(fresh => {
+      const idx = WC_MATCHES.findIndex(m => m.id === fresh.id);
+      if (idx === -1) return;
+      const m = WC_MATCHES[idx];
+      if (
+        m.status    !== fresh.status    ||
+        m.scoreHome !== fresh.scoreHome ||
+        m.scoreAway !== fresh.scoreAway
+      ) {
+        WC_MATCHES[idx] = { ...m, ...fresh };
+        changed = true;
+      }
+    });
+
+    if (changed) {
+      standings = buildStandings();
+      if (activeTab === 'fixtures')  renderFixtures();
+      if (activeTab === 'standings') renderStandings();
+    }
+
+    setLiveBadge(data.hasLive, data.fetchedAt);
+    schedulePoll(data.hasLive);
+  } catch {
+    schedulePoll(false);
+  }
+}
+
+function schedulePoll(isLive) {
+  clearTimeout(_pollTimer);
+  _pollTimer = setTimeout(fetchLiveScores, isLive ? 30_000 : 60_000);
+}
+
+function setLiveBadge(isLive, fetchedAt) {
+  const badge = document.getElementById('live-badge');
+  const clock = document.getElementById('update-clock');
+  if (badge) {
+    badge.textContent  = isLive ? 'LIVE' : 'LIVE DATA';
+    badge.classList.toggle('pulsing', isLive);
+  }
+  if (clock && fetchedAt) {
+    const t = new Date(fetchedAt);
+    clock.textContent = `Updated ${t.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
+  }
+}
+
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Pre-build standings (populates GROUP_MAP)
   standings = buildStandings();
   setTab('fixtures');
 
-  // Live clock
   const el = document.getElementById('header-date');
   if (el) el.textContent = new Date().toLocaleDateString('en-GB', { weekday:'short', day:'2-digit', month:'short', year:'numeric' });
+
+  // Kick off live score polling immediately
+  fetchLiveScores();
 });
